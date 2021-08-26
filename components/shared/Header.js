@@ -17,13 +17,19 @@ const BsNavLink = props => {
     )
 }
 
+const BsNavBrand = () => 
+    <Link href="/">
+        <a className="navbar-brand port-navbar-brand">Yatiyr</a>
+    </Link>
+
+
 const LoginLink = () => 
-    <span className="nav-link port-navbar-link clickable">Login</span>
+    <a className="nav-link port-navbar-link" href="/api/v1/login">Login</a>
 
 const LogoutLink = () =>
-    <span className="nav-link port-navbar-link clickable">Logout</span>
+    <a className="nav-link port-navbar-link" href="/api/v1/logout">Logout</a>
 
-const Header = () => {
+const Header = ({user, loading}) => {
     const [isOpen, setIsOpen] = useState(false);
     const toggle = () => setIsOpen(!isOpen);
 
@@ -34,11 +40,7 @@ const Header = () => {
                 color="transparent"
                 dark
                 expand="md">
-                <div className="navbar-brand">
-                    <Link href="/">
-                        <a className="port-navbar-brand">Yatiyr</a>
-                    </Link>
-                </div>
+                <BsNavBrand/>
                 <NavbarToggler onClick={toggle} />
                 <Collapse isOpen={isOpen} navbar>
                     <Nav className="mr-auto" navbar>
@@ -59,12 +61,20 @@ const Header = () => {
                         </NavItem>                                                                                                 
                     </Nav>
                     <Nav navbar>
-                        <NavItem className="part-navbar-item">
-                            <LoginLink/>
-                        </NavItem>
-                        <NavItem className="part-navbar-item">
-                            <LogoutLink/>
-                        </NavItem>                        
+                        { !loading &&
+                            <>
+                                { user &&
+                                    <NavItem className="part-navbar-item">
+                                        <LogoutLink/>
+                                    </NavItem>   
+                                }
+                                { !user &&
+                                    <NavItem className="part-navbar-item">
+                                        <LoginLink/>
+                                    </NavItem> 
+                                }
+                            </>
+                        }                    
                     </Nav>
                 </Collapse>
             </Navbar>
