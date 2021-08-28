@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-html-link-for-pages */
 import React, {useState} from "react";
 import Link from "next/link";
 import {
@@ -58,7 +59,19 @@ const Header = ({user, loading}) => {
                         </NavItem>
                         <NavItem className="part-navbar-item">
                             <BsNavLink href="/cv" title="Cv"/>
-                        </NavItem>                                                                                                 
+                        </NavItem> 
+                        {/* <NavItem className="part-navbar-item">
+                            <BsNavLink href="/secret" title="Secret"/>
+                        </NavItem>
+                        <NavItem className="part-navbar-item">
+                            <BsNavLink href="/secretssr" title="SecretSSR"/>
+                        </NavItem>
+                        <NavItem className="part-navbar-item">
+                            <BsNavLink href="/onlyadmin" title="Admin"/>
+                        </NavItem>
+                        <NavItem className="part-navbar-item">
+                            <BsNavLink href="/onlyadminssr" title="AdminSSR"/>
+                        </NavItem>                                                                                                                                                                                             */}
                     </Nav>
                     <Nav navbar>
                         { !loading &&
