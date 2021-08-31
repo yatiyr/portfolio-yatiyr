@@ -25,6 +25,14 @@ class PorfolioApi {
     createPortfolio(data) {
         return axios.post(this.apiUrl, data, this.config);        
     }
+
+    update(id, data) {
+        return axios.patch(`${this.apiUrl}/${id}`, data, this.config);        
+    }
+
+    delete(id) {
+        return axios.delete(`${this.apiUrl}/${id}`, this.config);        
+    }      
 };
 
 
