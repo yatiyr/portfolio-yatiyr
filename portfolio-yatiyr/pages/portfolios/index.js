@@ -76,7 +76,8 @@ export async function getStaticProps() {
   const portfolios = json.data;
   
   return {
-    props: {portfolios}
+    props: {portfolios},
+    revalidate: 1
   }
 }
 
