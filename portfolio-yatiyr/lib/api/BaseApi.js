@@ -16,7 +16,11 @@ class BaseApi {
 
     update(id, data) {
         return axios.patch(`${this.apiUrl}/${id}`, data, this.config);        
-    }    
+    }
+    
+    getByUser() {
+        return axios.get(`${this.apiUrl}/me`, this.config);        
+    }
 
     getById(id) {
         return axios.get(`${this.apiUrl}/${id}`);
